@@ -18,6 +18,7 @@ import java.util.*
 interface DeviceDiscoveryListener {
     fun onDeviceDiscovered(device: BluetoothDevice)
     fun demarrerDecouverteAppareils()
+    fun demanderPermissionsBluetooth()
 }
 
 class BluetoothManager(private val context: Context, private val listener: DeviceDiscoveryListener) {

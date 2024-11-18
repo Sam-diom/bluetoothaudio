@@ -12,14 +12,16 @@ class AudioCapturer(private val outputStream: OutputStream) {
     private val bufferSize = AudioRecord.getMinBufferSize(sampleRate, channelConfig, audioFormat)
 
     @SuppressLint("MissingPermission")
-    private val audioRecord = AudioRecord(MediaRecorder.AudioSource.MIC, sampleRate, channelConfig, audioFormat, bufferSize)
+    private val audioRecord = AudioRecord(
+        MediaRecorder.AudioSource.MIC, sampleRate, channelConfig, audioFormat, bufferSize
+    )
 
     @Volatile
     var isCapturing = false
     private var captureThread: Thread? = null
 
     fun startCapturing() {
-        if (isCapturing) return  // Évite de lancer plusieurs captures
+        if (isCapturing) return
         isCapturing = true
         audioRecord.startRecording()
 
@@ -30,26 +32,29 @@ class AudioCapturer(private val outputStream: OutputStream) {
                     val read = audioRecord.read(buffer, 0, buffer.size)
                     if (read > 0) {
                         outputStream.write(buffer, 0, read)
+                        outputStream.flush()
                     }
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
-                stopCapturing() // Assure que les ressources sont libérées
+                stopCapturing()
             }
         }
     }
 
     fun stopCapturing() {
-        if (!isCapturing) return  // Évite l'arrêt multiple
+        if (!isCapturing) return
         isCapturing = false
-        captureThread?.join()  // Attend la fin du fil de capture
+        captureThread?.join()
         audioRecord.stop()
-        audioRecord.release()  // Libère les ressources
-        outputStream.close()   // Ferme le flux de sortie pour libérer les ressources
+        audioRecord.release()
+        outputStream.close()
     }
 
-    fun readAudioData() {
-
+    fun readAudioData(): ByteArray {
+        val buffer = ByteArray(bufferSize)
+        val bytesRead = audioRecord.read(buffer, 0, buffer.size)
+        return if (bytesRead > 0) buffer.copyOfRange(0, bytesRead) else ByteArray(0)
     }
 }

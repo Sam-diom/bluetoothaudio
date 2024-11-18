@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">bluetoothaudio</string>
-    <string name="connect">Connect</string>
-    <string name="start">Start</string>
+    <string name="app_name">Bluetoothaudio</string>
+    <string name="scan">Scan</string>
+    <string name="rescan">Rescan</string>
     <string name="stop">Stop</string>
+    <string name="rechercher_des_appareils_bluetooth">Rechercher des appareils Bluetooth</string>
 </resources>

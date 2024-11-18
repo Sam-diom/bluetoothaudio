@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <Button
-        android:id="@+id/connectButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/connect"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
-
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/connectButton"
-        android:layout_marginTop="20dp"/>
-
-    <Button
-        android:id="@+id/stopButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stop"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/startButton"
-        android:layout_marginTop="20dp"/>
-
-    <ListView
-        android:id="@+id/devicesListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/stopButton"
-        android:layout_marginTop="20dp"/>
+        android:layout_height="match_parent">
+
+    <!-- Bouton Scan -->
+    <Button
+            android:id="@+id/connectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scan"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp" />
+
+    <!-- Bouton Rescan -->
+    <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rescan"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/connectButton"
+            android:layout_marginTop="20dp" />
+
+    <!-- Bouton pour arrêter l'audio ou désactiver Bluetooth -->
+    <Button
+            android:id="@+id/stopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stop"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/startButton"
+            android:layout_marginTop="20dp" />
+
+    <!-- Liste pour afficher les appareils Bluetooth découverts -->
+    <ListView
+            android:id="@+id/devicesListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/stopButton"
+            android:layout_marginTop="20dp" />
 
 </RelativeLayout>

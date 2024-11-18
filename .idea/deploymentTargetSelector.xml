@@ -15,12 +15,12 @@
           <targets>
             <Target type="DEFAULT_BOOT">
               <handle>
-                <DeviceId pluginId="PhysicalDevice" identifier="serial=0670625141113505" />
+                <DeviceId pluginId="PhysicalDevice" identifier="serial=prgip7e6cqj7yti7" />
               </handle>
             </Target>
             <Target type="DEFAULT_BOOT">
               <handle>
-                <DeviceId pluginId="LocalEmulator" identifier="path=/Users/samdiom/.android/avd/Pixel_6_API_34.avd" />
+                <DeviceId pluginId="PhysicalDevice" identifier="serial=0670625141113505" />
               </handle>
             </Target>
           </targets>
